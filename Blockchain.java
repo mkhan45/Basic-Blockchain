@@ -3,8 +3,9 @@ class Blockchain{
     ArrayList<Transaction> currentTransactions;
 
     public Blockchain(){
-        chain = new ArrayList<Block>
-        currentTransactions = new ArrayList<Transaction>
+        chain = new ArrayList<Block>;
+        chain.add()
+        currentTransactions = new ArrayList<Transaction>;
     }
 
     public newBlock(){
