@@ -8,8 +8,6 @@ public class blockchainRun{
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Input");
-
         while(true){
             String input = "u1 mine";
             System.out.println(input);
