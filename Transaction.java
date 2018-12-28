@@ -8,4 +8,12 @@ class Transaction{
         recipient = recieve;
         amount = amnt;
     }
+
+    public String toString(){
+        String s = "";
+        s += "Sender: " + sender;
+        s += "\n Recipient: " + recipient;
+        s += "\n Amount: " + amount;
+        return s;
+    }
 }

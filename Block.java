@@ -49,4 +49,16 @@ class Block{
     public int index(){
         return index;
     }
+
+    public String toString(){
+        String s = "{ \n";
+        for(Transaction t : transactions)
+            s += t.toString() + "\n";
+        s += "}";
+        return s;        
+    }
+
+    public long getTimestamp(){
+        return timestamp;
+    }
 }

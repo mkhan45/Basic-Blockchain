@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class main{
+public class blockchainRun{
 
     static Blockchain blockchain = new Blockchain();
     static UserList users = new UserList();
@@ -15,12 +15,13 @@ public class main{
             String[] command = input.split(" ");
 
             if(users.indexOf(command[0].split(",")[0]) != -1){
-                
+                break;
             }else{
                 users.addUser(new User(command[0]));
             }
 
-        }       
+        }      
+        scanner.close();
     }
 
     public void execCommand(String cmd, User u1, User u2){

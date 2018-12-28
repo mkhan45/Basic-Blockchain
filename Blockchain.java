@@ -20,7 +20,7 @@ class Blockchain{
         return false;
     }
 
-    public boolean newTransaction(){
+    public boolean newTransaction(int value, User u1, User u2l){
         return true;
     }
 
@@ -40,5 +40,10 @@ class Blockchain{
         return false;
     }
 
-
+    public String toString(){
+        String s = "";
+        for(Block b : chain)
+            s += b.toString() + "\n";
+        return s;
+    }
 }
