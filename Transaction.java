@@ -3,7 +3,7 @@ class Transaction{
     private String recipient;
     private double amount;
 
-    public Transaction(String send, String recieve, String amnt){
+    public Transaction(String send, String recieve, int amnt){
         sender = send;
         recipient = recieve;
         amount = amnt;

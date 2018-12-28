@@ -1,17 +1,17 @@
-new java.util.Date()
+import java.util.*;
+
 
 class Block{
     private int index;
-    private int timestamp;
+    private long timestamp;
     private ArrayList<Transaction> transactions;
     private int proof;
     private int previousHash;
 
-    public Block(int index, int proof, int previousHashNumber){
+    public Block(int index, int previousHashNumber){
         this.index = index;
-        this.proof = proof;
-        this.previousHash = previousHash;
-        transactions = new ArrayList<Transaction>;
+        this.previousHash = previousHashNumber;
+        transactions = new ArrayList<Transaction>();
         timestamp = System.currentTimeMillis();
     }
 
@@ -19,16 +19,18 @@ class Block{
         index = 0;
         previousHash = 1;
         proof = 1;
-        transactions = new ArrayList<Transaction>;
-        timestamp = System.currentTimeMillis;
+        transactions = new ArrayList<Transaction>();
+        timestamp = System.currentTimeMillis();
     }
 
     public int proofOfWork(){
         int numberToTest = 0;
         while (true) {
-            if ((previousHashNumber * numberToTest).hashCode().startsWith("00")) 
-                return numberToTest;
-            numberToTest++
+            if (Integer.valueOf((previousHash* numberToTest)).hashCode() % 100 == 0) {
+               proof = numberToTest;
+               return proof;
+            }
+            numberToTest++;
         }
     }
 
@@ -38,5 +40,13 @@ class Block{
 
     public void addTransaction(Transaction t){
         transactions.add(t);
+    }
+    
+    public int getHash(){
+        return proof;
+    }
+
+    public int index(){
+        return index;
     }
 }
