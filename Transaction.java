@@ -1,9 +1,9 @@
 class Transaction{
-    private String sender;
-    private String recipient;
+    private User sender;
+    private User recipient;
     private double amount;
 
-    public Transaction(String send, String recieve, int amnt){
+    public Transaction(User send, User recieve, int amnt){
         sender = send;
         recipient = recieve;
         amount = amnt;
@@ -11,8 +11,8 @@ class Transaction{
 
     public String toString(){
         String s = "";
-        s += "Sender: " + sender;
-        s += "\n Recipient: " + recipient;
+        s += "Sender: \n" + sender;
+        s += "\n Recipient: \n" + recipient;
         s += "\n Amount: " + amount;
         return s;
     }

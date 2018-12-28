@@ -20,7 +20,10 @@ class Blockchain{
         return false;
     }
 
-    public boolean newTransaction(int value, User u1, User u2l){
+    public boolean newTransaction(int value, User u1, User u2){
+        Block b = chain.get(chain.size() - 1);
+        Transaction t = new Transaction(u1, u2, value);
+        b.addTransaction(t);
         return true;
     }
 
@@ -41,9 +44,9 @@ class Blockchain{
     }
 
     public String toString(){
-        String s = "";
+        String s = "[\n";
         for(Block b : chain)
             s += b.toString() + "\n";
-        return s;
+        return s + "\n]";
     }
 }

@@ -18,4 +18,12 @@ class User{
     public void addValue(double d){
         value += d;
     }
+
+    public String toString(){
+        String s = "";
+
+        s += "Name: " + name;
+        s += "\nValue: " + value;
+        return s;
+    }
 }

@@ -1,10 +1,17 @@
 {
     "configurations": [
+    {
+        "type": "java",
+        "name": "Debug (Attach)",
+        "request": "attach",
+        "hostName": "localhost",
+        "port": "<debug port of the debuggee>"
+    },
         {
             "type": "java",
             "name": "CodeLens (Launch) - main",
             "request": "launch",
-            "mainClass": "main",
+            "mainClass": "blockchainRun",
             "projectName": "Blockchain_2140c82e"
         }
     ]

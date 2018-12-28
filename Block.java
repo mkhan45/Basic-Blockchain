@@ -24,7 +24,7 @@ class Block{
     }
 
     public int proofOfWork(){
-        int numberToTest = 0;
+        int numberToTest = 1;
         while (true) {
             if (Integer.valueOf((previousHash* numberToTest)).hashCode() % 100 == 0) {
                proof = numberToTest;

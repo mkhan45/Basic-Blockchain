@@ -19,4 +19,15 @@ class UserList{
     public void addUser(User u){
         users.add(u);
     }
+
+    public String toString(){
+        String s = "";
+        for(User u : users)
+            s += u.toString() + "\n";
+        return s;
+    }
+
+    public User get(int i){
+        return users.get(i);
+    }
 }
