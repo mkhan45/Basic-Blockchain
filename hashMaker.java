@@ -15,6 +15,13 @@ class hashMaker {
     public String hash(int i){
         byte[] bytes = (i + "").getBytes(StandardCharsets.UTF_16);
 
-        return digest.digest(bytes).toString();
+        return bytesToString(bytes);
+    }
+
+    public String bytesToString(byte[] bytes){
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < bytes.length; i++)
+            sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+        return sb.toString();
     }
 }

@@ -1,5 +1,3 @@
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.util.ArrayList;
 
 class Blockchain {
@@ -36,17 +34,18 @@ class Blockchain {
 
     public boolean testBlock(Block b, hashMaker h) {
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
             Block b2 = chain.get(b.index() - 1);
             int hashMult = b2.getHash() * b.getHash();
 
-            if (h.hash(hashMult).contains("420"))
+            String hash = h.hash(hashMult);
+            if (hash.contains("39003500"))
                 return true;
-            // return false;
-            return true;
+            return false;
+            // return true;
         } catch (Exception e) {
             System.out.println(e);
-            return true;
+            return false;
+            // return true;
         }
     }
 

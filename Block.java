@@ -1,6 +1,4 @@
 import java.util.*;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 
 class Block {
     private int index;
@@ -26,11 +24,12 @@ class Block {
 
     public int proofOfWork(hashMaker h) {
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
             int numberToTest = 1;
             while (true) {
                 int hashMult = previousHash * numberToTest;
-                if (h.hash(hashMult).contains("420")) {
+                String hash = h.hash(hashMult);
+                System.out.println(hash);
+                if (hash.contains("39003500")) {
                     proof = numberToTest;
                     return proof;
                 }
