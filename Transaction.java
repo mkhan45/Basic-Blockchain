@@ -3,7 +3,7 @@ class Transaction{
     private User recipient;
     private double amount;
 
-    public Transaction(User send, User recieve, int amnt){
+    public Transaction(User send, User recieve, double amnt){
         sender = send;
         recipient = recieve;
         amount = amnt;

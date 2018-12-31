@@ -21,7 +21,7 @@ class Blockchain {
         return false;
     }
 
-    public boolean newTransaction(int value, User u1, User u2) {
+    public boolean newTransaction(double value, User u1, User u2) {
         Block b = chain.get(chain.size() - 1);
         Transaction t = new Transaction(u1, u2, value);
         b.addTransaction(t);

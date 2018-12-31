@@ -20,10 +20,6 @@ class User{
     }
 
     public String toString(){
-        String s = "";
-
-        s += "Name: " + name;
-        s += "\nValue: " + value;
-        return s;
+        return "(" + name + ", " + value + ")";
     }
 }
