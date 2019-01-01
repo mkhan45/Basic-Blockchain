@@ -3,7 +3,6 @@ import java.util.ArrayList;
 class Blockchain {
     ArrayList<Block> chain;
     ArrayList<Transaction> currentTransactions;
-    String string = "";
     hashMaker hm = new hashMaker();
 
     public Blockchain() {
@@ -13,13 +12,12 @@ class Blockchain {
     }
 
     public boolean newBlock() {
-        Block b = new Block(chain.size(), chain.get(chain.size() - 1).getHash());
+       Block b = new Block(chain.size(), chain.get(chain.size() - 1).getHash());
         b.proofOfWork(hm);
         if (testBlock(b, hm)) {
             chain.add(b);
             return true;
         }
-        string += b.toString();
         return false;
     }
 
@@ -43,18 +41,16 @@ class Blockchain {
             if (hash.contains("39003500"))
                 return true;
             return false;
-            // return true;
         } catch (Exception e) {
             System.out.println(e);
             return false;
-            // return true;
         }
     }
 
     public String toString() {
-        String s = "[\n\t";
+        String s = "[\n";
         for (Block b : chain)
-            s += "\t" + b.toString() + "\n";
+            s += b.toString() + "\n\n";
         return s + "\n]";
     }
 

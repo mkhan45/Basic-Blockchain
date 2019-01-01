@@ -12,7 +12,9 @@
             "name": "CodeLens (Launch) - main",
             "request": "launch",
             "mainClass": "blockchainRun",
-            "projectName": "Blockchain_2140c82e"
+            "projectName": "Blockchain_2140c82e",
+            "console": "integratedTerminal",
+            "stopOnEntry": false,
         }
     ]
 }

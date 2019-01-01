@@ -11,9 +11,9 @@ class Transaction{
 
     public String toString(){
         String s = "";
-        s += "Sender: \n" + sender;
-        s += "\n Recipient: \n" + recipient;
-        s += "\n Amount: " + amount;
-        return s;
+        s += "\tSender: " + sender;
+        s += "\n\t\t Recipient: " + recipient;
+        s += "\n\t\t Amount: " + amount;
+        return s + "\n";
     }
 }

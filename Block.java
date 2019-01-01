@@ -59,10 +59,10 @@ class Block {
     }
 
     public String toString() {
-        String s = "{ \n";
+        String s = "\t{ \n";
         for (Transaction t : transactions)
-            s += t.toString() + "\n";
-        s += "}";
+            s += "\t" + t.toString() + "\n";
+        s += "\t}";
         return s;
     }
 

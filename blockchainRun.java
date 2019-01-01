@@ -29,8 +29,8 @@ public class blockchainRun{
             }else if(command.length == 3){ //user user command -> give
                 execCommand("give", users.getUser(command[0]), users.getUser(command[1]));
             }
-            System.out.println(users);
             System.out.println(blockchain);
+            System.out.println(users);
         }      
     }
 
