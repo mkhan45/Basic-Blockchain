@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class UserList{
+class UserList implements Serializable{
     private ArrayList<User> users;
 
     public UserList(){

@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class Blockchain {
+class Blockchain implements Serializable {
     ArrayList<Block> chain;
     ArrayList<Transaction> currentTransactions;
-    hashMaker hm = new hashMaker();
+    transient hashMaker hm = new hashMaker();
 
     public Blockchain() {
         chain = new ArrayList<Block>();
@@ -12,7 +13,7 @@ class Blockchain {
     }
 
     public boolean newBlock() {
-       Block b = new Block(chain.size(), chain.get(chain.size() - 1).getHash());
+        Block b = new Block(chain.size(), chain.get(chain.size() - 1).getHash());
         b.proofOfWork(hm);
         if (testBlock(b, hm)) {
             chain.add(b);

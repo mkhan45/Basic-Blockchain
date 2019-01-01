@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
-class hashMaker {
+class hashMaker{
     MessageDigest digest;
 
     public hashMaker(){

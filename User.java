@@ -1,4 +1,6 @@
-class User{
+import java.io.Serializable;
+
+class User implements Serializable{
     private double value;
     private String name;
 

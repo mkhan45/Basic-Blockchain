@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.*;
 
-class Block {
+class Block implements Serializable{
     private int index;
     private long timestamp;
     private ArrayList<Transaction> transactions;

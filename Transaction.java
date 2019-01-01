@@ -1,4 +1,6 @@
-class Transaction{
+import java.io.Serializable;
+
+class Transaction implements Serializable{
     private User sender;
     private User recipient;
     private double amount;
