@@ -4,7 +4,7 @@ Simple java blockchain to demonstrate and understand blockchains in general.
 
 
 
-#Usage
+# Usage
 
 Run `java blockchainRun`
 
