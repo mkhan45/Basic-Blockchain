@@ -4,8 +4,8 @@ class Transaction{
     private double amount;
 
     public Transaction(User send, User recieve, double amnt){
-        sender = send;
-        recipient = recieve;
+        sender = send.copy();
+        recipient = recieve.copy();
         amount = amnt;
     }
 

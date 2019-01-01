@@ -22,4 +22,10 @@ class User{
     public String toString(){
         return "(" + name + ", " + value + ")";
     }
+
+    public User copy(){
+        User newUser = new User(name);
+        newUser.addValue(value);
+        return newUser;
+    }
 }

@@ -10,6 +10,12 @@ public class blockchainRun{
 
         while(true){
             String input = scanner.nextLine();
+
+            if(input.equals("-1")){
+                scanner.close();
+                break;
+            }
+
             String[] command = input.split(" ");
 
             if(command.length == 2){ //user command -> mine or create user

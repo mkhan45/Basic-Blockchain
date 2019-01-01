@@ -3,6 +3,7 @@ import java.util.ArrayList;
 class Blockchain {
     ArrayList<Block> chain;
     ArrayList<Transaction> currentTransactions;
+    String string = "";
     hashMaker hm = new hashMaker();
 
     public Blockchain() {
@@ -18,6 +19,7 @@ class Blockchain {
             chain.add(b);
             return true;
         }
+        string += b.toString();
         return false;
     }
 
@@ -50,10 +52,10 @@ class Blockchain {
     }
 
     public String toString() {
-        String s = "";
+        String s = "[\n\t";
         for (Block b : chain)
-            s += b.toString() + "\n";
-        return s;
+            s += "\t" + b.toString() + "\n";
+        return s + "\n]";
     }
 
 }
