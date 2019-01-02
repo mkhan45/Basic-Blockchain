@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 class Transaction implements Serializable{
+    private static final long serialVersionUID = 1041050558716633540L;
     private User sender;
     private User recipient;
     private double amount;

@@ -1,4 +1,3 @@
-import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
@@ -21,7 +20,7 @@ class hashMaker{
 
     public String bytesToString(byte[] bytes){
         StringBuffer sb = new StringBuffer();
-        for(int i = 0; i < bytes.length; i++)
+        for(int i = 1; i < bytes.length; i++)
             sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
         return sb.toString();
     }

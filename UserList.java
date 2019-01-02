@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 class UserList implements Serializable{
+    private static final long serialVersionUID = 135596086452185148L;
     private ArrayList<User> users;
 
     public UserList(){

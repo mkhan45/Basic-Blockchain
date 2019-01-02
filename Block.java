@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.*;
 
 class Block implements Serializable{
+    private static final long serialVersionUID = 6011393147475410066L;
     private int index;
     private long timestamp;
     private ArrayList<Transaction> transactions;

@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class blockchainRun {
@@ -13,6 +14,7 @@ public class blockchainRun {
     public static void main(String[] args) {
 
         while (true) {
+            System.out.println("Enter input:");
             String input = scanner.nextLine();
 
             if (input.equals("-1")) {
@@ -92,11 +94,34 @@ public class blockchainRun {
         try {
             FileInputStream fin = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fin);
-            blockchain = (Blockchain) ois.readObject();
+            Blockchain newBlockchain = (Blockchain) ois.readObject();
+            if(verifyChain(newBlockchain))
+                blockchain = newBlockchain;
+            else
+                System.out.println("Invalid blockchain");
             ois.close();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+
+    public static boolean verifyChain(Blockchain b){ //reimplemented but it's fine I think
+        hashMaker hm = new hashMaker();
+        ArrayList<Block> chain = b.getChain();
+        for(int i = 0; i < chain.size(); i++){
+            try{
+                Block b2 = chain.get(i - 1);
+                int hashMult = chain.get(i).getHash() * b2.getHash();
+
+                String hash = hm.hash(hashMult);
+                if(!hash.contains("39003500"))
+                    return false;
+            }catch(Exception e){
+                System.out.println(e);
+            }
+        }
+        return true;
+    }
+
 
 }

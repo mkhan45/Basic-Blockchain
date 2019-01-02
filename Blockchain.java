@@ -2,9 +2,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 class Blockchain implements Serializable {
+    static final long serialVersionUID = -5557682781880916697L;
     ArrayList<Block> chain;
     ArrayList<Transaction> currentTransactions;
-    transient hashMaker hm = new hashMaker();
+    private transient hashMaker hm = new hashMaker();
 
     public Blockchain() {
         chain = new ArrayList<Block>();
@@ -53,6 +54,14 @@ class Blockchain implements Serializable {
         for (Block b : chain)
             s += b.toString() + "\n\n";
         return s + "\n]";
+    }
+
+    public ArrayList<Block> getChain(){
+        return chain;
+    }
+
+    public hashMaker getHm(){
+        return hm;
     }
 
 }
