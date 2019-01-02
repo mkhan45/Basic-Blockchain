@@ -11,7 +11,7 @@ class UserList implements Serializable{
 
     public int indexOf(String name){
         for(int i = 0; i < users.size(); i++){
-            if(users.get(i).getName() == name)
+            if(users.get(i).getName().equals(name))
                 return i;
         }
 
@@ -39,5 +39,9 @@ class UserList implements Serializable{
 
     public User get(int i){
         return users.get(i);
+    }
+
+    public boolean contains(String name){
+        return indexOf(name) != -1;
     }
 }

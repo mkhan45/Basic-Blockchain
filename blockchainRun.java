@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class blockchainRun {
 
     static Blockchain blockchain = new Blockchain();
-    static UserList users = new UserList();
     static Scanner scanner = new Scanner(System.in);
+    static UserList users = blockchain.getUsers();
 
     public static void main(String[] args) {
 
@@ -24,31 +24,46 @@ public class blockchainRun {
 
             String[] command = input.split(" ");
 
-            if (command.length == 2) { // user command -> mine or create user or save or load
-                if (command[0].equals("save")) {
+            switch (command.length) {
+            case 2:
+                switch (command[0]) {
+                case "save":
                     save(command[1]);
                     System.out.println("Saved to " + command[1]);
-                } else if (command[0].equals("load")) {
+                    break;
+                case "load":
                     load(command[1]);
                     System.out.println("Loading from " + command[1]);
+                    break;
+                default: // means command is mine or create or error
+                    switch(command[1]){
+                        case "create":
+                            createUser(command[0]);
+                            break;
+                        case "mine":
+                            User u1 = users.getUser(command[0]);
+                            execCommand("mine", u1);
+                        default:
+                            System.out.println("Invalid command");
+                    }
                 }
-
-                else if (command[1].equals("create")) { // [name] create
-                    User u1 = new User(command[0]);
-                    users.addUser(u1);
-                } else if (command[1].equals("mine")) {
-                    User u1 = users.getUser(command[0]);
-                    execCommand("mine", u1);
-                }
-            } else if (command.length == 3) { // user user command -> give
-                execCommand("give", users.getUser(command[0]), users.getUser(command[1]));
+                break;
+            case 3: //is a give command
+                if(users.contains(command[0]) && users.contains(command[1]))
+                    execCommand("give", users.getUser(command[0]), users.getUser(command[1]));
+                else
+                    System.out.println("One or more user doesn't exist");
+                break;
+            default:
+                System.out.println("Invalid command");
             }
+
             System.out.println(blockchain);
             System.out.println(users);
         }
     }
 
-    public static void execCommand(String cmd, User u1, User u2) {
+    public static void execCommand(String cmd, User u1, User u2) { //is kind of stupid and should be removed
         switch (cmd) {
         case "give":
             System.out.println("Amount?");
@@ -64,7 +79,12 @@ public class blockchainRun {
         }
     }
 
-    public static void execCommand(String cmd, User u1) {
+    public static void execCommand(String cmd, User u1) { //still kind of stupid
+        if(u1 == null){
+            System.out.println("Invalid user");
+            return;
+        }
+
         switch (cmd) {
         case "mine":
             System.out.println("Mining");
@@ -95,8 +115,10 @@ public class blockchainRun {
             FileInputStream fin = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fin);
             Blockchain newBlockchain = (Blockchain) ois.readObject();
-            if(verifyChain(newBlockchain))
+            if (verifyChain(newBlockchain)){
                 blockchain = newBlockchain;
+                users = blockchain.getUsers();
+            }
             else
                 System.out.println("Invalid blockchain");
             ois.close();
@@ -105,23 +127,30 @@ public class blockchainRun {
         }
     }
 
-    public static boolean verifyChain(Blockchain b){ //reimplemented but it's fine I think
+    public static boolean verifyChain(Blockchain b) { // reimplemented but it's fine I think
         hashMaker hm = new hashMaker();
         ArrayList<Block> chain = b.getChain();
-        for(int i = 0; i < chain.size(); i++){
-            try{
+        for (int i = 1; i < chain.size(); i++) {
+            try {
                 Block b2 = chain.get(i - 1);
                 int hashMult = chain.get(i).getHash() * b2.getHash();
 
                 String hash = hm.hash(hashMult);
-                if(!hash.contains("39003500"))
+                if (!hash.contains("39003500"))
                     return false;
-            }catch(Exception e){
+            } catch (Exception e) {
                 System.out.println(e);
             }
         }
         return true;
     }
 
+    public static void createUser(String name) {
+        if (!users.contains(name)) {
+            User u1 = new User(name);
+            users.addUser(u1);
+        } else
+            System.out.println("User already exists");
+    }
 
 }

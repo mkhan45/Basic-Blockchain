@@ -4,6 +4,7 @@ import java.util.ArrayList;
 class Blockchain implements Serializable {
     static final long serialVersionUID = -5557682781880916697L;
     ArrayList<Block> chain;
+    UserList users = new UserList();
     ArrayList<Transaction> currentTransactions;
     private transient hashMaker hm = new hashMaker();
 
@@ -62,6 +63,10 @@ class Blockchain implements Serializable {
 
     public hashMaker getHm(){
         return hm;
+    }
+
+    public UserList getUsers(){
+        return users;
     }
 
 }
