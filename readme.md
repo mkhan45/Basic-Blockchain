@@ -34,4 +34,3 @@ Start by creating a few users with different usernames. Next mine a bit and give
     }
 ]
 ```
-Idk why it's putting it in a code block
