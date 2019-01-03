@@ -61,7 +61,7 @@ class Block implements Serializable{
     }
 
     public String toString() {
-        String s = "\t{ \n";
+        String s = "\t{ \t Index:" + index + "\t Hash: " + proof + "\n";
         for (Transaction t : transactions)
             s += "\t" + t.toString() + "\n";
         s += "\t}";
