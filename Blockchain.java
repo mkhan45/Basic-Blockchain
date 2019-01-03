@@ -41,7 +41,7 @@ class Blockchain implements Serializable {
             int hashMult = b2.getHash() * b.getHash();
 
             String hash = h.hash(hashMult);
-            if (hash.contains("39003500"))
+            if (hash.contains("39003500") && b.getHash() >= b2.getHash())
                 return true;
             return false;
         } catch (Exception e) {

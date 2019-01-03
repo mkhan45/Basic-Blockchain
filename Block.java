@@ -26,7 +26,7 @@ class Block implements Serializable{
 
     public int proofOfWork(hashMaker h) {
         try {
-            int numberToTest = 1;
+            int numberToTest = previousHash;
             while (true) {
                 int hashMult = previousHash * numberToTest;
                 String hash = h.hash(hashMult);

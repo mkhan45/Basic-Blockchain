@@ -136,7 +136,7 @@ public class blockchainRun {
                 int hashMult = chain.get(i).getHash() * b2.getHash();
 
                 String hash = hm.hash(hashMult);
-                if (!hash.contains("39003500"))
+                if (!hash.contains("39003500") || chain.get(i).getHash() < b2.getHash())
                     return false;
             } catch (Exception e) {
                 System.out.println(e);
