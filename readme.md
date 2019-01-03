@@ -23,8 +23,8 @@ There are 5 commands.
 
 Start by creating a few users with different usernames. Next mine a bit and give to different users. The format that the blockchain is displayed in is:
 
+```
 [ (Blockchain start)
-
     { (Block, may or may not contain transactions)
 
         Sender: ...    (Transaction)
@@ -33,5 +33,4 @@ Start by creating a few users with different usernames. Next mine a bit and give
 
     }
 ]
-
-Idk why it's putting it in a code block
+```
