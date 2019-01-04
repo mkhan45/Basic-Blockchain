@@ -15,6 +15,8 @@ class Blockchain implements Serializable {
     }
 
     public boolean newBlock() {
+        if(hm == null)
+            setHm();
         Block b = new Block(chain.size(), chain.get(chain.size() - 1).getHash());
         b.proofOfWork(hm);
         if (testBlock(b, hm)) {
@@ -67,6 +69,10 @@ class Blockchain implements Serializable {
 
     public UserList getUsers(){
         return users;
+    }
+
+    public void setHm(){
+        hm = new hashMaker();
     }
 
 }
